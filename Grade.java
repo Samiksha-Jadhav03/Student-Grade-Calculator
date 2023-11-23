@@ -1,38 +1,43 @@
-import java.util.Scanner;
+// TASK_02_STUDENT GRADE CALCULATOR //
 
-public class GradeCalculator {
+import java.util.Scanner;
+ 
+public class Task_2_Student_Grade_Calculator {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Enter the number of subjects: ");
-        int numOfSubjects = scanner.nextInt();
-        int[] marks = new int[numOfSubjects];
-        
-        for (int i = 0; i < numOfSubjects; i++) {
-            System.out.print("Enter the marks for subject " + (i + 1) + ": ");
-            marks[i] = scanner.nextInt();
+        int count, i;
+        float totalMarks = 0, percentage, average;
+        Scanner scanner;
+        scanner = new Scanner(System.in);
+ 
+        System.out.println("Enter Number of Subject");
+        count = scanner.nextInt();
+ 
+        System.out.println("Enter Marks of " + count + " Subject");
+        for (i = 0; i < count; i++) {
+            totalMarks += scanner.nextInt();
         }
-        
-        int totalMarks = 0;
-        for (int mark : marks) {
-            totalMarks += mark;
-        }
-        
-        double average = (double) totalMarks / numOfSubjects;
-        
-        System.out.println("Total Marks: " + totalMarks);
-        System.out.println("Average Marks: " + average);
-        
-        if (average >= 90) {
-            System.out.println("Grade: A");
-        } else if (average >= 80) {
-            System.out.println("Grade: B");
-        } else if (average >= 70) {
-            System.out.println("Grade: C");
-        } else if (average >= 60) {
-            System.out.println("Grade: D");
-        } else {
-            System.out.println("Grade: F");
+         
+        System.out.println("Total MArks : " + totalMarks);
+        // Each subject is of 100 Marks
+        percentage = (totalMarks / (count * 100)) * 100;
+ 
+        switch ((int) percentage / 10) {
+        case 9:
+            System.out.println("Grade : A+");
+            break;
+        case 8:
+        case 7:
+            System.out.println("Grade : A");
+            break;
+        case 6:
+            System.out.println("Grade : B");
+            break;
+        case 5:
+            System.out.println("Grade : C");
+            break;
+        default:
+            System.out.println("Grade : D");
+            break;
         }
     }
 }
